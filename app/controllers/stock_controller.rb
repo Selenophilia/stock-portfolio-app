@@ -3,12 +3,9 @@ class StockController < ApplicationController
 
 
     def index
-        quote = @client.quote('MSFT')
+        @quote = @client.quote('MSFT')
 
-       @latest_price =  quote.latest_price # 90.165
-      @get_change =  quote.change # 0.375
-       @get_percent= quote.change_percent # 0.00418
-       @get_change_percent= quote.change_percent_s # '+0.42%'
+     
     end 
 
 
