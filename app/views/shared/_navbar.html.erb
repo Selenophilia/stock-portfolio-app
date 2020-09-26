@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark justify-content-between" style="background-color: #3b5998">
+  <div class="logo">
+        <a href="/">
+            <span>Stock</span>
+        </a>
+      
+  </div>
+
+  <div class="navbar d-flex justify-content-end">
+    <div class="navbar-nav ">
+            <a class="nav-item nav-link " href="#">Portfolio <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="#">Transactions</a>
+            <a class="nav-item nav-link" href="#">Market Summary</a>
+        
+        <% if current_user %>
+            <div class="dropdown">
+                <a class="navbar-link dropdown-toggle"  data-toggle="dropdown"  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%# <img class="gravatar" src="https://s.gravatar.com/avatar/ea8be90cf21a6f11a0e5a1cd9b9ebc47?s=80"> %>
+                <%= current_user.email %>
+                </a>
+            
+                <div class="dropdown-menu" > 
+                    <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
+ 
+</nav>
