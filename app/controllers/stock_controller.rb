@@ -3,9 +3,10 @@ class StockController < ApplicationController
 
 
     def index
-        @quote = @client.quote('MSFT')
-
-     
+        @quote       = @client.quote('MSFT').latest_price
+        @user        = current_user
+        @computation = @quote * 10    
+        @user.calc_total_balance(@computation)
     end 
 
 
@@ -15,7 +16,6 @@ class StockController < ApplicationController
             publishable_token: 'Tpk_21780fe8aa454bbe84a3a7d693b51372',
             endpoint: 'https://sandbox.iexapis.com/v1'
           )
-    
     end
 
 end
