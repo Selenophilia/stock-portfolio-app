@@ -1,3 +1,54 @@
-<h1>Your Portfolio</h1>
+<div class="portfolio-container">
+    <div class="portfolio-table">
+        <div class="header-container">
+            <h1 class="header__text">Your Portfolio</h1>
 
-<h1>Balance: <%= number_to_currency(@user.balance, precision:2) %></h1>
+            <h3 class="header__text balance">Balance: <%= number_to_currency(@user.balance, precision:2) %></h1>
+        </div>
+            <table class="table">
+            <thead>
+                <tr >
+                <th scope="col">Ticker Symbol</th>
+                <th scope="col">Change</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Current Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td >Mark</td>
+                <td >Otto</td>
+                <td >@mdo</td>
+                <td >@mdo</td>
+                </tr>
+                <tr>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+                <td>@fat</td>
+                </tr>
+                <tr>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+                 <td>@twitter</td>
+                </tr>
+            </tbody>
+            </table>
+    </div>
+
+    <div class="stock-form">
+        <h3>Buy Stocks</h3>
+    <form>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Ticker Symbol</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Quantity</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" >
+        </div>
+    <button type="submit" class="btn-stock">Submit</button>
+    </form>
+</div>
+
