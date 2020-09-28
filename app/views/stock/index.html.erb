@@ -6,36 +6,33 @@
 
             <h3 class="header__text balance">Balance: <%= number_to_currency(@user.balance, precision:2) %></h1>
         </div>
+           <% if @stocks.size > 0 %>
             <table class="table">
             <thead>
                 <tr >
                 <th scope="col">Stock</th>
                 <th scope="col">Change</th>
                 <th scope="col">Quantity</th>
-                <th scope="col">Current Value</th>
+                <th scope="col">Price</th>
+                <th scope="col">Total Cost </th>
                 </tr>
             </thead>
             <tbody>
+            <%= @stock_data.each do |symbol, stock_data|%>
+            <!-- stock_data: [quantity, price, change, total_price] -->
                 <tr>
-                <td >Mark</td>
-                <td >Otto</td>
-                <td >@mdo</td>
-                <td >@mdo</td>
+                 <td><%= symbol %></td> 
+                <td ><%= stock_data[2] %></td>
+                <td ><%stock_data[0]%></td>
+                <td ><%stock_data[1]%></td>
+                <td ><%stock_data[3]%></td>
                 </tr>
-                <tr>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>@fat</td>
-                </tr>
-                <tr>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                 <td>@twitter</td>
-                </tr>
+            <% end %>
             </tbody>
             </table>
+        <% else %>
+            <p>No stocks yet</p>
+        <% end %>
     </div>
 
     <div class="stock-form">
