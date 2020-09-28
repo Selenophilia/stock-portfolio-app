@@ -14,18 +14,20 @@
                 <th scope="col">Change</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Price</th>
+                <th scope="col">Current Value</th>
                 <th scope="col">Total Cost </th>
                 </tr>
             </thead>
             <tbody>
             <%= @stock_data.each do |symbol, stock_data|%>
-            <!-- stock_data: [quantity, price, change, total_price] -->
+            <!-- stock_data: [quantity, price, change, total_price,open_price] -->
                 <tr>
                  <td><%= symbol %></td> 
-                <td ><%= stock_data[2] %></td>
-                <td ><%stock_data[0]%></td>
-                <td ><%stock_data[1]%></td>
-                <td ><%stock_data[3]%></td>
+                <td ><%= stock_data[2]%></td>
+                <td ><%= stock_data[0]%></td>
+                <td ><%= stock_data[1]%></td>
+                <td ><%= stock_data[4]%></td>
+                <td ><%= stock_data[3]%></td>
                 </tr>
             <% end %>
             </tbody>
@@ -36,17 +38,32 @@
     </div>
 
     <div class="stock-form">
-        <h3>Buy Stocks</h3>
-    <form>
+    <h3>Buy Stocks</h3>
+    <%= simple_form_for @transaction, :url => user_transaction_path(@user.id) do |form| %>
+        <%= form.fields_for :stock do |st| %>
+                <div class="form-group">
+                <%= st.input :symbol, as: :string,
+                                        wrapper: false,
+                                        required: false,
+                                        label: "Ticker Symbol",
+                                        input_html: {
+                                            class: 'form-control',
+                                        } %>
+                </div>
+        <% end %>
         <div class="form-group">
-            <label for="exampleInputEmail1">Ticker Symbol</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                <%= form.input :quantity, as: :integer,
+                                        wrapper: false,
+                                        required: false,
+                                        label: "Quantity",
+                                        input_html: {
+                                            class: 'form-control',
+                                        
+                                        } %>
         </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Quantity</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" >
-        </div>
-    <button type="submit" class="btn-stock">Submit</button>
-    </form>
+        <%= form.submit "Submit", class: 'btn-stock' %>
+
+    <%end%>
+
 </div>
 
