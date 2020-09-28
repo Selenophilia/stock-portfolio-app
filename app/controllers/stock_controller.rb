@@ -4,7 +4,7 @@ class StockController < ApplicationController
 
     def index
         @user        = current_user
-        @stocks      = User.find(current_user.id).stocks.uniq
+        @stocks      = User.find(current_user.id).stocks.uniq ||=nil
         @stock_data  = Hash.new
        # byebug
         @stocks.each do |stock|
@@ -12,28 +12,23 @@ class StockController < ApplicationController
             
             total_price = 0
 
-            quote = client.quote(stock.symbol)
+            quote = @client.quote(stock.symbol)
 
             price = quote.latest_price
-            open_price = quote.previous_close
-            change = quote.change
-            change_percent = change.change_percent_s
+            change_percent = quote.change_percent_s
 
             @user.transactions.where(stock_id: stock.id).each do |st|
                 quantity = quantity + st.quantity
             end
 
             @user.transactions.where(stock_id: stock.id).each do |st|
-                total_price = total + st.price
+                total_price = total_price + st.purchase_price
             end
 
-            @stock_data[stock.symbol] = [quantity, price, change_percent, total_price,open_price]
+            @stock_data[stock.symbol] = [quantity, price, change_percent, total_price]
         end
         @transaction = Transaction.new(user_id: current_user.id)
-        @transaction.build_stock
-        # @quote       = @client.quote('IBM').latest_price   
-        # @computation = @quote * 5    
-        # @user.calc_total_balance(@computation)
+        @transaction.build_stock   
     end 
 
     def create
