@@ -3,8 +3,7 @@
     <div class="portfolio-table">
         <div class="header-container">
             <h1 class="header__text">Your Portfolio</h1>
-
-            <h3 class="header__text balance">Balance: <%= number_to_currency(@user.balance, precision:2) %></h1>
+            <h3 class="header__text balance">Balance: <%= number_to_currency(@user.balance, precision:2) %></h3>
         </div>
            <% if @stocks.size > 0 %>
             <table class="table">
@@ -14,19 +13,17 @@
                 <th scope="col">Change</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Price</th>
-                <th scope="col">Current Value</th>
                 <th scope="col">Total Cost </th>
                 </tr>
             </thead>
             <tbody>
             <%= @stock_data.each do |symbol, stock_data|%>
-            <!-- stock_data: [quantity, price, change, total_price,open_price] -->
+            <%# [quantity, price, change_percent, total_price] %>
                 <tr>
                  <td><%= symbol %></td> 
                 <td ><%= stock_data[2]%></td>
                 <td ><%= stock_data[0]%></td>
                 <td ><%= stock_data[1]%></td>
-                <td ><%= stock_data[4]%></td>
                 <td ><%= stock_data[3]%></td>
                 </tr>
             <% end %>
@@ -40,7 +37,7 @@
     <div class="stock-form">
     <h3>Buy Stocks</h3>
     <%= simple_form_for @transaction, :url => user_transaction_path(@user.id) do |form| %>
-        <%= form.fields_for :stock do |st| %>
+        <%= form.simple_fields_for :stock do |st| %>
                 <div class="form-group">
                 <%= st.input :symbol, as: :string,
                                         wrapper: false,
@@ -61,8 +58,8 @@
                                         
                                         } %>
         </div>
+        <%= form.hidden_field :user_id, { :value => @user.id } %>
         <%= form.submit "Submit", class: 'btn-stock' %>
-
     <%end%>
 
 </div>
