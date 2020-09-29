@@ -29,6 +29,9 @@ gem 'jquery-rails'
 #simple form
 gem 'simple_form'
 
+#bootstrap-table
+gem 'bootstrap-table-rails', '~> 1.8', '>= 1.8.1'
+
 #devise
 gem 'devise'
 # Use Active Storage variant
