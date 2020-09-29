@@ -15,6 +15,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       unless user.persisted?
         clean_up_passwords user
         set_minimum_password_length
+        flash[:notice] = "An error occured. Please try again "
         redirect_back(fallback_location: '/users/sign_up')
         return
       end
