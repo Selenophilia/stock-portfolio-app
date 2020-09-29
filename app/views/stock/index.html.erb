@@ -20,11 +20,11 @@
             <%= @stock_data.each do |symbol, stock_data|%>
             <%# [quantity, price, change_percent, total_price] %>
                 <tr>
-                 <td><%= symbol %></td> 
-                <td ><%= stock_data[2]%></td>
-                <td ><%= stock_data[0]%></td>
-                <td ><%= stock_data[1]%></td>
-                <td ><%= stock_data[3]%></td>
+                 <td class="highlight-primary"><%= symbol %></td> 
+                <td class="highlight-primary"><%= stock_data[2]%></td>
+                <td ><%= pluralize(stock_data[0], 'share')%></td>
+                <td class="highlight-primary"><%= number_to_currency(stock_data[1], precision: 2)%></td>
+                <td class="highlight-secondary"><%= number_to_currency(stock_data[3], precision:2)%></td>
                 </tr>
             <% end %>
             </tbody>
@@ -59,7 +59,7 @@
                                         } %>
         </div>
         <%= form.hidden_field :user_id, { :value => @user.id } %>
-        <%= form.submit "Submit", class: 'btn-stock' %>
+        <%= form.submit "Buy", class: 'btn-stock' %>
     <%end%>
 
 </div>

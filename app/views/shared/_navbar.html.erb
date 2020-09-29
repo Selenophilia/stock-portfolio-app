@@ -8,8 +8,8 @@
 
   <div class="navbar d-flex justify-content-end">
     <div class="navbar-nav ">
-            <a class="nav-item nav-link " href="#">Portfolio <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#">Transactions</a>
+            <%=  link_to "Portfolio", user_stock_index_url(current_user.id), class: "nav-item nav-link"  %>  
+            <%=  link_to "Transactions", user_transaction_index_url(current_user.id), class: "nav-item nav-link"  %>            
             <a class="nav-item nav-link" href="#">Market Summary</a>
         
         <% if current_user %>
