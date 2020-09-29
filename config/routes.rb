@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root controller: :stock, action: :index
 
   get '/users/:user_id/stock' => 'stock#index', as: 'user_stock_index'
+  get '/stocks' => 'stock#show', as: 'stock_show'
   get '/users/:user_id/transaction' => 'transaction#index', as: 'user_transaction_index'
   get '/users/:user_id/transaction/new'=> 'transaction#new',  as:'new_user_transaction' 
   post '/users/:user_id/transaction'=> 'transaction#create',  as: 'user_transaction'
