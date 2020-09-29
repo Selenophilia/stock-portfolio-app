@@ -3,10 +3,9 @@ class Transaction < ApplicationRecord
   belongs_to :stock
 
   validates :quantity, numericality: {only_integer: true}
-
   accepts_nested_attributes_for :stock
 
-  def stock_attributes(stock)
+  def stock_attributes=(stock)
     client = IEX::Api::Client.new(
       publishable_token: 'Tpk_21780fe8aa454bbe84a3a7d693b51372',
       endpoint: 'https://sandbox.iexapis.com/v1'
@@ -15,6 +14,7 @@ class Transaction < ApplicationRecord
     self.stock.price = client.price(stock[:symbol])
     self.stock.open_price = client.quote(stock[:symbol]).previous_close
     self.stock.update(stock)
+
   end 
 
 end
