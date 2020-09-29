@@ -4,25 +4,27 @@
         <div class="header-container">
             <h1 class="header__text">Market Summary</h1>
         </div>
-            <table class="table">
+            <table class="table" id="table"
+                                 data-toggle="table"
+                                 data-height="500"
+                                 data-custom-sort="customSort">
             <thead>
-                <tr >
-                <th scope="col">Symbol</th>
-                <th scope="col">Company Name</th>
-                <th scope="col">Change</th>
-                <th scope="col">Previous Close</th>
-                <th scope="col" data-filter-control="true">Current Value</th>
+                <tr>
+                    <th scope="col"> Symbol</th>
+                    <th scope="col" >Company Name</th>
+                    <th scope="col"  data-field="change" data-sortable="true">Change</th>
+                    <th scope="col"  data-field="Previous Close" data-sortable="true">Previous Close</th>
+                    <th scope="col"  data-field="Current Value" data-sortable="true">Current Value</th>
                 </tr>
             </thead>
             <tbody>
              <% @most_active.each do |stock|%>
                 <tr>
-                <td ><%= stock.symbol%></td> 
-                <td ><%= stock.company_name%></td> 
-                <td ><%= stock.change_percent_s%></td> 
-                <td ><%= number_to_currency(stock.previous_close, precision: 2)%></td> 
-                <td ><%= number_to_currency(stock.iex_realtime_price, precision: 2)%></td> 
-                
+                    <td ><%= stock.symbol%></td> 
+                    <td ><%= stock.company_name%></td> 
+                    <td ><%= stock.change_percent_s%></td> 
+                    <td ><%= number_to_currency(stock.previous_close, precision: 2)%></td> 
+                    <td ><%= number_to_currency(stock.iex_realtime_price, precision: 2)%></td> 
                 </tr>
             <% end %>
             </tbody>

@@ -1,12 +1,12 @@
 <%= render partial: 'shared/navbar' %>
-<% if flash[:notice]%>
+<% if flash[:error]%>
             <div class="alert alert-danger" role="alert">
-                    <%=  flash[:notice] %>
+                    <%=  flash[:error] %>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-    <%end%>
+<%end%>
     
 <div class="portfolio-container">
        

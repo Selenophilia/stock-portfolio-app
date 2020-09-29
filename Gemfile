@@ -32,6 +32,9 @@ gem 'simple_form'
 #bootstrap-table
 gem 'bootstrap-table-rails', '~> 1.8', '>= 1.8.1'
 
+#fontawesome
+gem "font-awesome-rails"
+
 #devise
 gem 'devise'
 # Use Active Storage variant
