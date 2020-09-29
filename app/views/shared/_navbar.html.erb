@@ -10,8 +10,7 @@
     <div class="navbar-nav ">
             <%=  link_to "Portfolio", user_stock_index_url(current_user.id), class: "nav-item nav-link"  %>  
             <%=  link_to "Transactions", user_transaction_index_url(current_user.id), class: "nav-item nav-link"  %>            
-            <a class="nav-item nav-link" href="#">Market Summary</a>
-        
+            <%=  link_to "Market Summary", stock_show_url, class: "nav-item nav-link"  %>       
         <% if current_user %>
             <div class="dropdown">
                 <a class="navbar-link dropdown-toggle"  data-toggle="dropdown"  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
