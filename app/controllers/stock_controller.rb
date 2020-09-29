@@ -1,5 +1,5 @@
 class StockController < ApplicationController
-    before_action :load_api
+    before_action :load_api, only: [:index,:show]
 
 
     def index
@@ -33,6 +33,10 @@ class StockController < ApplicationController
     def create
     end 
 
+    def show
+        
+        @most_active = @client.stock_market_list(:mostactive)
+    end       
 
 
     private
