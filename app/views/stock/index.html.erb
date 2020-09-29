@@ -1,3 +1,13 @@
+<% if flash[:notice]%>
+        <div class="alert alert-error" role="alert">
+                <%=  flash[:notice] %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+<%end%>
+ 
+
 <%= render partial: 'shared/navbar' %>
 <div class="portfolio-container">
     <div class="portfolio-table">
@@ -7,18 +17,17 @@
         </div>
            <% if @stocks.size > 0 %>
             <table class="table">
-            <thead>
+             <thead> 
                 <tr >
-                <th scope="col">Stock</th>
+                <th scope="col">Ticker Symbol</th>
                 <th scope="col">Change</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Price</th>
                 <th scope="col">Total Cost </th>
                 </tr>
-            </thead>
-            <tbody>
-            <%= @stock_data.each do |symbol, stock_data|%>
-            <%# [quantity, price, change_percent, total_price] %>
+             </thead>
+             <tbody> 
+            <% @stock_data.each do |symbol, stock_data| %>
                 <tr>
                  <td class="highlight-primary"><%= symbol %></td> 
                 <td class="highlight-primary"><%= stock_data[2]%></td>
