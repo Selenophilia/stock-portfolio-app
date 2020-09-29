@@ -1,0 +1,32 @@
+<%= render partial: 'shared/navbar' %>
+<div class="portfolio-container">
+    <div class="portfolio-table">
+        <div class="header-container">
+            <h1 class="header__text">Transaction History</h1>
+        </div>
+            <table class="table">
+            <thead>
+                <tr >
+                <th scope="col">Date</th>
+                <th scope="col">Symbol</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+            <%= @transactions.each do |transaction|%>
+                <tr>
+                 <td ><%= transaction.purchase_date%></td> 
+                 <td ><%= transaction.purchase_date%></td> 
+                <td ><%= pluralize(transaction.quantity, 'share')%></td>
+                <td ><%= number_to_currency(transaction.purchase_price, precision: 2)%></td>
+                
+                </tr>
+            <% end %>
+            </tbody>
+            </table>
+
+    </div>
+
+</div>
+
