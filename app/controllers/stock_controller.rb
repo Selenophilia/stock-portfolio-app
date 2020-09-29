@@ -33,9 +33,8 @@ class StockController < ApplicationController
     def create
     end 
 
-    def show
-        
-        @most_active = @client.stock_market_list(:mostactive)
+    def show  
+        @most_active = @client.stock_market_list(:mostactive)	
     end       
 
 

@@ -4,7 +4,7 @@ class TransactionController < ApplicationController
     def index
         @user = current_user
         @transactions = Transaction.where(user_id:  @user.id)
-        
+
     end 
     
     def create
@@ -25,7 +25,7 @@ class TransactionController < ApplicationController
                 redirect_to user_stock_index_path(current_user.id)
             end 
         else
-            flash[:notice] = "Insuficient balance! This transaction will cost: #{stock_price}"
+            flash[:notice] = "Insuficient balance!"
             redirect_to user_stock_index_path(current_user.id)
         end 
     end 
