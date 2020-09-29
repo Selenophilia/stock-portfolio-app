@@ -21,11 +21,11 @@ class TransactionController < ApplicationController
                      @user.calc_total_balance(total_price)
                      redirect_to user_stock_index_path(current_user.id)
             else    
-                flash[:notice] = "Please enter a whole number of shares to purchase."
+                flash[:error] = "Please enter a whole number of shares to purchase."
                 redirect_to user_stock_index_path(current_user.id)
             end 
         else
-            flash[:notice] = "Insuficient balance!"
+            flash[:error] = "Insuficient balance!"
             redirect_to user_stock_index_path(current_user.id)
         end 
     end 
