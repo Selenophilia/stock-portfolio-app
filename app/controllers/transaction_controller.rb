@@ -3,6 +3,7 @@ class TransactionController < ApplicationController
     before_action :transaction_params, only: [:create]
     def index
         @user = current_user
+        @transactions = Transaction.where(user_id:  @user.id)
 
     end 
     
@@ -14,10 +15,10 @@ class TransactionController < ApplicationController
         if current_user.balance > total_price
             @transaction = Transaction.create(transaction_params)
             if @transaction.valid?
-                     @transaction.purchase_price = stock_price
+                     @transaction.purchase_price = total_price
                      @transaction.purchase_date = DateTime.now
                      @transaction.save
-                     @user.calc_total_balance(stock_price)
+                     @user.calc_total_balance(total_price)
                      redirect_to user_stock_index_path(current_user.id)
             else    
                 flash[:notice] = "Please enter a whole number of shares to purchase."
@@ -38,8 +39,7 @@ class TransactionController < ApplicationController
     end
 
     def transaction_params
-      # byebug  
-
+        #byebug  
         params.require(:transaction).permit(:user_id, :quantity, :stock_id,
         :stock_attributes => [:symbol])
     end

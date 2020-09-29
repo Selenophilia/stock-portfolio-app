@@ -6,7 +6,6 @@ class StockController < ApplicationController
         @user        = current_user
         @stocks      = User.find(current_user.id).stocks.uniq ||=nil
         @stock_data  = Hash.new
-       # byebug
         @stocks.each do |stock|
             quantity = 0
             
