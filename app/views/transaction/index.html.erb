@@ -8,16 +8,16 @@
             <thead>
                 <tr >
                 <th scope="col">Date</th>
-                <th scope="col">Symbol</th>
+                <th scope="col">Ticker Symbol</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Total Cost</th>
                 </tr>
             </thead>
             <tbody>
-            <%= @transactions.each do |transaction|%>
+            <% @transactions.each do |transaction|%>
                 <tr>
                  <td ><%= transaction.purchase_date%></td> 
-                 <td ><%= transaction.purchase_date%></td> 
+                 <td ><%= Stock.find_by(id: transaction.stock_id).symbol%></td> 
                 <td ><%= pluralize(transaction.quantity, 'share')%></td>
                 <td ><%= number_to_currency(transaction.purchase_price, precision: 2)%></td>
                 
