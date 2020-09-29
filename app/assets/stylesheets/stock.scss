@@ -2,6 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 //general styles
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+*{
+  font-family: 'Montserrat', sans-serif;
+}
+
+.fas{
+    margin-right: 5px;
+    font-size: 30px;
+}
 .portfolio-container,
 .header-container{
     display: flex;
@@ -77,15 +87,14 @@ input[type=text]{
 }
 
 .btn-stock {
-    background-color: #fff;
-    border: 2px solid #7C9AB7;
-    border-radius: 21px;
+    background-color: #3CB371;
+    border:none;
+    border-radius: 5px;
     padding: 10px;
-    width: 100%;
-    box-shadow: 0 1px 2px 0 rgba(159,159,159,0.50);
-    color: #053E75;
+    width: 50%;
+    margin-left: 50px;
+    color: #fff;
     font-weight: bold;
-    margin-top: 20px;
 }
 
 //stock form style end
