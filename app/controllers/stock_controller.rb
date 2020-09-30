@@ -46,7 +46,7 @@ class StockController < ApplicationController
     def load_api
         @client = IEX::Api::Client.new(
             publishable_token: ENV['SAND_BOX_KEY'],
-            endpoint: 'https://cloud.iexapis.com/v1/'
+            endpoint: 'https://sandbox.iexapis.com/v1'
           )
     end
 
