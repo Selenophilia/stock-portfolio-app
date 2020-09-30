@@ -4,6 +4,7 @@
         <div class="header-container">
             <h1 class="header__text">Transaction History</h1>
         </div>
+        <% if @transactions.size > 0 %>
             <table class="table">
             <thead>
                 <tr >
@@ -25,6 +26,9 @@
             <% end %>
             </tbody>
             </table>
+        <% else %>
+             <p>No transactions yet</p>
+        <% end %>
 
     </div>
 
