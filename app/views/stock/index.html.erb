@@ -1,5 +1,75 @@
-<h1>index page</h1>
-<h1><%= @latest_price %></h1>
-<h1><%= @get_change %></h1>
-<h1><%= @get_percent %></h1>
-<h1><%= @get_change_percent %></h1>
+<%= render partial: 'shared/navbar' %>
+<% if flash[:error]%>
+            <div class="alert alert-danger" role="alert">
+                    <%=  flash[:error] %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+<%end%>
+    
+<div class="portfolio-container">
+       
+    <div class="portfolio-table">
+        <div class="header-container">
+            <h1 class="header__text">Your Portfolio</h1>
+            <h3 class="header__text balance">Balance: <%= number_to_currency(@user.balance, precision:2) %></h3>
+        </div>
+           <% if @stocks.size > 0 %>
+            <table class="table">
+             <thead> 
+                <tr >
+                <th scope="col">Ticker Symbol</th>
+                <th scope="col">Change</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col">Total Cost </th>
+                </tr>
+             </thead>
+             <tbody> 
+            <% @stock_data.each do |symbol, stock_data| %>
+                <tr>
+                 <td class="highlight-primary"><%= symbol %></td> 
+                <td class="highlight-primary"><%= stock_data[2]%></td>
+                <td ><%= pluralize(stock_data[0], 'share')%></td>
+                <td class="highlight-primary"><%= number_to_currency(stock_data[1], precision: 2)%></td>
+                <td class="highlight-secondary"><%= number_to_currency(stock_data[3], precision:2)%></td>
+                </tr>
+            <% end %>
+            </tbody>
+            </table>
+        <% else %>
+            <p>No stocks yet</p>
+        <% end %>
+    </div>
+
+    <div class="stock-form">
+    <h3>Buy Stocks</h3>
+    <%= simple_form_for @transaction, :url => user_transaction_path(@user.id) do |form| %>
+        <%= form.simple_fields_for :stock do |st| %>
+                <div class="form-group">
+                <%= st.input :symbol, as: :string,
+                                        wrapper: false,
+                                        required: false,
+                                        label: "Ticker Symbol",
+                                        input_html: {
+                                            class: 'form-control',
+                                        } %>
+                </div>
+        <% end %>
+        <div class="form-group">
+                <%= form.input :quantity, as: :integer,
+                                        wrapper: false,
+                                        required: false,
+                                        label: "Quantity",
+                                        input_html: {
+                                            class: 'form-control',
+                                        
+                                        } %>
+        </div>
+        <%= form.hidden_field :user_id, { :value => @user.id } %>
+        <%= form.submit "Buy", class: 'btn-stock' %>
+    <%end%>
+
+</div>
+

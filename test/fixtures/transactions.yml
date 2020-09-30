@@ -1,11 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  quantity: 
-  purchases: 
-  stock: 
+  user: one
+  stock: one
 
 two:
-  quantity: 
-  purchases: 
-  stock: 
+  user: two
+  stock: two

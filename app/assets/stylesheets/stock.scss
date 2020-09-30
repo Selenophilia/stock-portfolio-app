@@ -1,3 +1,100 @@
 // Place all the styles related to the stock controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+//general styles
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+*{
+  font-family: 'Montserrat', sans-serif;
+}
+
+.fas{
+    margin-right: 5px;
+    font-size: 30px;
+}
+.portfolio-container,
+.header-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+h3{
+    font-weight: bold;
+    color: #053E75;
+    font-size: 18px; 
+}
+
+.highlight-primary{
+    color:#32CD32
+}
+
+.highlight-secondary{
+    color:#B90E0A;
+}
+
+// portfolio style start
+.portfolio-table {
+    flex-basis: 100%;
+    padding: 40px;
+}
+
+.header__text{
+    font-weight: bold;
+    font-size: 24px;    
+}
+
+.header__text.balance{
+    color: #000;
+    text-align: right;
+    font-size: 16px;
+    font-weight: normal;    
+}
+
+tr{
+    border-bottom: solid 4px #fff;;
+}
+
+td {
+    background-color: #EFF4F8;
+    padding: 15px 25px;
+}
+
+th {
+    padding: 15px 25px;
+}
+
+// portfolio style end
+
+//stock form style start
+label {
+    display: block;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.stock-form {
+    background-color: #EFF4F8;
+    height: 100vh;
+    padding: 50px;
+    width: 400px;
+
+}
+
+input[type=text]{
+    border: none;
+    padding: 10px;
+    width: 100%;
+}
+
+.btn-stock {
+    background-color: #3CB371;
+    border:none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 50%;
+    margin-left: 50px;
+    color: #fff;
+    font-weight: bold;
+}
+
+//stock form style end

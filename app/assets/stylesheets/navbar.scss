@@ -1,0 +1,53 @@
+$primary: #85C1E9;
+$white: #fff;
+$logo: #f9f1f1;
+
+.nav-item,
+.navbar-link {
+    color: $white;
+    font-size: 1rem;
+    padding: 0;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: $white;
+}
+
+.navbar div.logo a{
+    font-weight: 100;
+    font-size: 2rem;
+    color: $logo;
+}
+.navbar div.logo a span {
+    text-decoration: none;
+    color: $logo;
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+
+.navbar div.logo a:hover{
+    text-decoration: none;
+}
+
+
+.navbar div.dropdown .navbar-link:hover{
+  text-decoration: none;
+  color: $primary;
+}
+
+.chat i{
+  font-size: 2rem;
+}
+
+.room-nav-link {
+  border: 1px solid lighten($primary, 10%);
+  background: lighten($white, 20%);
+
+  & + .room-nav-link {
+    border-top: 0 none;
+  }
+}
+
+.dropdown-menu {
+  min-width:6rem !important;
+}

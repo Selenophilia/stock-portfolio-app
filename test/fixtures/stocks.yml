@@ -1,9 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  symbol: 
-  price: 9.99
+  symbol: MyString
 
 two:
-  symbol: 
-  price: 9.99
+  symbol: MyString

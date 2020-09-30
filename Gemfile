@@ -26,6 +26,14 @@ gem 'iex-ruby-client'
 #bootstrap
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
+#simple form
+gem 'simple_form'
+
+#bootstrap-table
+gem 'bootstrap-table-rails', '~> 1.8', '>= 1.8.1'
+
+#fontawesome
+gem "font-awesome-rails"
 
 #devise
 gem 'devise'

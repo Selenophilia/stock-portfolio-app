@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark justify-content-between" style="background-color: #3b5998">
+  <div class="logo">
+        <a href="/">
+
+            <span><i class="fas fa-shekel-sign"></i>MetaStock</span>
+        </a>
+      
+  </div>
+
+  <div class="navbar d-flex justify-content-end">
+    <div class="navbar-nav ">
+            <%=  link_to "Portfolio", user_stock_index_url(current_user.id), class: "nav-item nav-link"  %>  
+            <%=  link_to "Transactions", user_transaction_index_url(current_user.id), class: "nav-item nav-link"  %>            
+            <%=  link_to "Market Summary", stock_show_url, class: "nav-item nav-link"  %>       
+        <% if current_user %>
+            <div class="dropdown">
+                <a class="navbar-link dropdown-toggle"  data-toggle="dropdown"  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img class="avatar" src="https://s.gravatar.com/avatar/ea8be90cf21a6f11a0e5a1cd9b9ebc47?s=80">
+                <%= current_user.username %>
+                </a>
+            
+                <div class="dropdown-menu" > 
+                    <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
+ 
+</nav>

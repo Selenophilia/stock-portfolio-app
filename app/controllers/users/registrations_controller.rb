@@ -10,9 +10,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super do |user|
+      unless user.persisted?
+        clean_up_passwords user
+        set_minimum_password_length
+        flash[:notice] = "An error occured. Please try again "
+        redirect_back(fallback_location: '/users/sign_up')
+        return
+      end
+    end
+  end
 
   # GET /resource/edit
   # def edit
