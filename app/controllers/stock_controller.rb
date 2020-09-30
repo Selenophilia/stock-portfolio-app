@@ -1,7 +1,7 @@
 class StockController < ApplicationController
     before_action :load_api, only: [:index,:show]
 
-
+    require 'net/http'
     def index
         @user        = current_user
         @stocks      = User.find(current_user.id).stocks.uniq ||=nil
@@ -34,7 +34,10 @@ class StockController < ApplicationController
     end 
 
     def show  
-        @most_active = @client.stock_market_list(:mostactive)	
+         uri = URI('https://sandbox.iexapis.com/stable/stock/market/list/mostactive?token=Tsk_abb3bfef5bac4820b058ea01006a8627&listLimit=100')
+         @request_api = Net::HTTP.get(uri)
+         @most_active = JSON.parse(@request_api)
+        
     end       
 
 
