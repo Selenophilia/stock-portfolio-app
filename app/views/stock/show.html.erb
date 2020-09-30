@@ -17,6 +17,7 @@
                     <th scope="col"  data-field="high" data-sortable="true">High</th>
                     <th scope="col"  data-field="low" data-sortable="true">Low</th>
                     <th scope="col"  data-field="Previous Close" data-sortable="true">Previous Close</th>
+                    <th scope="col"  data-field="volume" data-sortable="true">Volume</th>
                     <th scope="col"  data-field="Current Value" data-sortable="true">Current Value</th>
                 </tr>
             </thead>
@@ -29,6 +30,7 @@
                     <td ><%= key["open"]%></td> 
                     <td ><%= key["high"]%></td> 
                     <td ><%= key["low"] %></td> 
+                    <td ><%= number_to_currency(key["volume"], precision: 2)%></td> 
                     <td ><%= number_to_currency(key["previousClose"], precision: 2)%></td> 
                     <td ><%= number_to_currency(key["latestPrice"], precision: 2)%></td>  
                 </tr>
